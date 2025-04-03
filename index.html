@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=width=device-width, initial-scale=1.0">
+  <meta name="description" content="HD INFORPAPER - Serviços de papelaria e informática. Manutenção de computadores, venda de peças e cursos de informática.">
+  <title>HD INFORPAPER - Soluções em Informática e Papelaria</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Estilo geral */
+    body {
+      background: url('imagens/fundo-site.png') no-repeat center center fixed; /* Imagem de fundo */
+      background-size: cover; /* Ajusta a imagem para cobrir toda a área */
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    h1, h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    a:focus {
+      outline: 2px solid #00b7ff;
+    }
+
+    /* Cabeçalho */
+    header {
+      background: linear-gradient(to right, #1e3c72, #2a5298), url('C:/Users/USER/Desktop/Site HD Informatica/imagens/header-bg.jpg');
+      background-size: cover;
+      background-blend-mode: overlay;
+      color: white;
+      text-align: center;
+      padding: 20px 20px; /* Reduzi o padding para diminuir a altura */
+      border-bottom: 5px solid #1e3c72;
+    }
+
+    /* Estilo atualizado para o menu */
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: center; /* Centralizar os menus */
+      padding: 15px 20px;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      position: fixed; /* Fixar o menu no topo */
+      top: 0;
+      width: 100%; /* Garantir que ocupe toda a largura */
+      z-index: 1000; /* Manter acima de outros elementos */
+    }
+
+    .logo-container {
+      position: absolute; /* Posicionar o logo à esquerda */
+      left: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px; /* Reduzi o espaçamento entre a imagem e o texto */
+    }
+
+    .logo {
+      max-width: 50px; /* Diminui o tamanho máximo da imagem */
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.1);
+    }
+
+    .company-name {
+      font-size: 1.0rem; /* Reduzi o tamanho da fonte */
+      font-weight: 1000; /* Ajustei o peso da fonte */
+      color: #ffffff;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Mantive a sombra */
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .nav-bar {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-bar li {
+      position: relative;
+    }
+
+    .nav-bar li a {
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 30px;
+      background: linear-gradient(to right, #2a5298, #1e3c72);
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-bar li a:hover {
+      background: linear-gradient(to right, #4a90e2, #6bb5ff); /* Azul mais claro */
+      color: white;
+      transform: scale(1.1);
+      box-shadow: 0 4px 10px rgba(74, 144, 226, 0.5); /* Sombra azul clara */
+    }
+
+    .nav-bar li a i {
+      font-size: 1.5rem;
+    }
+
+    .nav-bar li a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background-color: #0077ff;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    .nav-bar li a:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    .menu-toggle {
+      display: none; /* Esconde o ícone de menu no desktop */
+    }
+
+    /* Estilo para dispositivos móveis */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex; /* Mostra o ícone de menu apenas em dispositivos móveis */
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+        z-index: 1002;
+      }
+
+      .nav-bar {
+        display: none; /* Esconde o menu padrão */
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #1e3c72;
+        padding: 20px;
+        z-index: 1001;
+      }
+
+      .nav-bar.active {
+        display: flex; /* Mostra o menu quando ativo */
+      }
+
+      .nav-bar li a {
+        font-size: 1.5rem;
+        padding: 15px;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    /* Seção Serviços */
+    #servicos {
+      padding: 60px 20px;
+      text-align: center;
+      background-color: #e3eaf5;
+      background-image: url('imagens/logo hd.png'); /* Adicionei a logo como fundo */
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 200px; /* Ajuste do tamanho da logo */
+    }
+
+    #servicos h1 {
+      font-size: 3rem;
+      color: #1e3c72;
+      margin-bottom: 40px;
+    }
+
+    .servicos-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .servico {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .servico:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .servico img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .servico h2 {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .servico p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .cta-button {
+      background-color: #1e3c72;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: inline-block;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .cta-button:hover {
+      background-color: #2a5298;
+    }
+
+    /* Seção Sobre Nós */
+    #sobre {
+      background-color: #f0f4f8;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    #sobre h1 {
+      font-size: 3rem;
+      color: #241e72;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    #sobre p {
+      font-size: 1.2rem;
+      color: #555;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto 20px;
+      text-align: justify;
+    }
+
+    /* Prova social */
+    .testimonials {
+      background-color: #e3eaf5;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .testimonials h1 {
+      font-size: 3rem;
+      color: #1e3c72;
+      margin-bottom: 30px;
+    }
+
+    .testimonials p {
+      font-size: 1.2rem;
+      color: #555;
+      line-height: 1.8;
+      max-width: 800px; /* Aumentei a largura máxima */
+      margin: 0 auto 20px;
+    }
+
+    .testimonials .testimonial {
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    /* Seção Contato */
+    #contato h1 {
+      font-size: 4rem; /* Aumentei o tamanho da fonte */
+      margin-top: 0; /* Removei margens superiores */
+      margin-bottom: 10px; /* Reduzi a margem inferior */
+    }
+
+    #contato p {
+      font-size: 1rem; /* Reduzi o tamanho da fonte */
+      margin-bottom: 20px; /* Ajustei a margem inferior */
+    }
+
+    #contato {
+      background-color: #1e3c72; /* Fundo azul */
+      color: white;
+      padding: 30px 20px; /* Reduzi o padding superior para subir o conteúdo */
+      text-align: center;
+      position: relative; /* Adicionado para posicionar os botões fixos */
+    }
+
+    .contato-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .contato-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 15px;
+      background-color: #2a5298; /* Azul mais claro */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .contato-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .contato-icon {
+      width: 50px;
+      height: 50px;
+    }
+
+    .contato-item p {
+      font-size: 0.1rem; /* Diminui o tamanho da fonte */
+      margin: 0;
+      color: white;
+    }
+
+    .social-buttons {
+      position: fixed; /* Tornar os botões fixos */
+      bottom: 20px; /* Distância da parte inferior */
+      right: 20px; /* Distância da lateral direita */
+      display: flex;
+      flex-direction: column; /* Organiza os botões na vertical */
+      gap: 15px;
+      z-index: 1000; /* Garantir que fiquem acima de outros elementos */
+    }
+
+    .social-button {
+      width: 70px; /* Aumentar o tamanho do botão */
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none; /* Remover o fundo */
+      border: none; /* Remover bordas */
+      transition: transform 0.3s;
+    }
+
+    .social-button:hover {
+      transform: scale(1.2);
+    }
+
+    .social-icon {
+      width: 50px; /* Aumentar o tamanho do ícone */
+      height: 50px;
+    }
+
+    /* Rodapé */
+    footer {
+      background-color: #1e3c72;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 1rem;
+      border-top: 5px solid #2a5298;
+    }
+
+    /* Botão Voltar ao Topo */
+    .back-to-top {
+      display: none; /* Removido o botão ao ocultá-lo */
+    }
+
+    /* Melhorias para dispositivos móveis */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      nav .nav-bar {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .servicos-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .welcome-banner {
+      text-align: center;
+      margin: 30px 0;
+      padding: 250px 20px; /* Aumentei o padding para ampliar a área visível */
+      background: url('imagens/imagem escritorio.png') no-repeat center center; /* Imagem como fundo */
+      background-size: cover; /* Preencher toda a área */
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      color: white; /* Texto em branco para contraste */
+    }
+
+    .welcome-banner h2 {
+      font-size: 3.5rem; /* Aumentar o tamanho do texto */
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Adicionar sombra ao texto */
+      opacity: 0; /* Inicialmente invisível */
+      transform: translateY(20px); /* Posição inicial */
+      animation: fadeIn 2s ease-out forwards; /* Animação de aparecer */
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0); /* Voltar à posição original */
+      }
+    }
+
+    img {
+      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+    }
+
+    img:hover {
+      transform: scale(1.05); /* Aumentar levemente a imagem */
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Adicionar sombra ao passar o mouse */
+    }
+  </style>
+</head>
+<body id="home">
+  <header>
+    <nav>
+      <div class="nav-container">
+        <div class="logo-container">
+          <a href="#home">
+            <img src="imagens/logo hd.png" alt="Logo da HD INFORPAPER" class="logo" style="max-width: 50px;">
+          </a>
+          <span class="company-name">HD INFORPAPER</span>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <ul class="nav-bar">
+          <li><a href="#home"><i class="fas fa-home"></i>Home</a></li>
+          <li><a href="#servicos"><i class="fas fa-cogs"></i>Serviços</a></li>
+          <li><a href="#sobre"><i class="fas fa-info-circle"></i>Sobre Nós</a></li>
+          <li><a href="#contato"><i class="fas fa-envelope"></i>Contato</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div class="welcome-banner">
+    <h2><strong>Estamos pronto para atendê-los!</strong></h2>
+  </div>
+
+  <main>
+    <section id="home">
+      <!-- Esta seção é apenas um ponto de ancoragem para o botão "Home" -->
+    </section>
+    <section id="servicos">
+      <h1>Nossos Serviços</h1>
+      <div class="servicos-container">
+        <div class="servico">
+          <img src="imagens/manutencao.png" alt="Manutenção de Computadores">
+          <h2>Manutenção de Computadores</h2>
+          <p>Oferecemos serviços de manutenção e reparo de computadores com qualidade e rapidez.</p>
+        </div>
+        <div class="servico">
+          <img src="imagens/peças.png" alt="Venda de Peças e Acessórios">
+          <h2>Venda de Peças e Acessórios de Informática e Papelaria</h2> 
+          <p>Trabalhamos com uma ampla variedade de peças e acessórios para computadores e papelaria em geral.</p>
+        </div>
+        <div class="servico">
+          <img src="imagens/curso.png" alt="Curso de Informática">
+          <h2>Cursos de Informática</h2>
+          <p>Oferecemos cursos de informática ideais para quem busca aprimorar suas habilidades e impulsionar sua carreira.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <h1>Sobre Nós</h1>
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <img src="imagens/quem-somos.png" alt="Quem Somos" style="width: 400px; height: 500px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <div style="max-width: 900px;"> <!-- Aumentei a largura máxima -->
+          <p>
+            A <strong style="color: #1e3c72;">HD INFORPAPER</strong> nasceu de um sonho: o desejo de abrir o próprio negócio e oferecer serviços de qualidade. Nossa história começou com a visão de criar um espaço que unisse papelaria e informática, atendendo às necessidades de quem busca excelência em produtos e serviços.
+          </p>
+          <p>
+            Identificamos a necessidade de oferecer soluções completas e acessíveis, desde manutenção de computadores até a venda de peças, acessórios e serviços de papelaria. Localizada no centro de Couto de Magalhães de Minas, nossa missão é proporcionar um atendimento personalizado e produtos de alta qualidade, sempre com foco na satisfação de nossos clientes.
+          </p>
+          <p>
+            Com dedicação e esforço, transformamos esse sonho em realidade. Oferecemos o melhor para nossos clientes, garantindo inovação, eficiência e confiança em cada serviço prestado.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <h1>O que nossos clientes dizem...</h1>
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <img src="imagens/cliente.png" alt="Clientes Satisfeitos" style="width: 400px; height: 350px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <div>
+          <div class="testimonial">
+            <p>"Recomendo e muito o seu trabalho, competência e comprometimento e o detalhe maior amor pelo que faz!"</p>
+            <strong>- A. C. F.</strong>
+          </div>
+          <div class="testimonial">
+            <p>"O PC está Top. Obrigado."</p>
+            <strong>- J. N. V.</strong>
+            <div class="testimonial">
+              <p>"Agradeço, pelo excelente serviço! Gratidão..🙏🏽 </p>
+              <strong>- A. G.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <h1>Contato</h1>
+      <p>Entre em contato conosco para mais informações sobre nossos serviços e produtos:</p>
+      <div class="contato-container">
+        <div class="contato-item">
+          <a href="https://www.google.com/maps?q=Praça+Matozinhos,+94+-+Centro+-+Couto+de+Magalhães+de+Minas,+CEP:+39.188-000" target="_blank">
+            <img src="imagens/endereco-icon.png" alt="Ícone de endereço" class="contato-icon">
+          </a>
+          <p><strong>Endereço:</strong><br>Praça Matozinhos, 94 - Centro - Couto de Magalhães de Minas / MG CEP: 39.188-000</p>
+        </div>
+        <div class="contato-item">
+          <img src="imagens/telefone-icon.png" alt="Ícone de telefone" class="contato-icon">
+          <p><strong>Telefone:</strong><br>(38) 99736-2429</p>
+        </div>
+        <div class="contato-item">
+          <img src="imagens/email-icon.png" alt="Ícone de email" class="contato-icon">
+          <p><strong>Email:</strong><br>su.portehd@outlook.com</p>
+        </div>
+        <div class="contato-item">
+          <img src="imagens/horario-icon.png" alt="Ícone de horário" class="contato-icon">
+          <p><strong>Horário de Funcionamento:</strong><br>Segunda a Sexta, das 8h às 18h</p>
+        </div>
+      </div>
+      <div class="social-buttons">
+        <a href="https://www.instagram.com/seu_usuario" target="_blank" class="social-button instagram">
+          <img src="imagens/instagram-icon.png" alt="Instagram" class="social-icon">
+        </a>
+        <a href="https://facebook.com/" target="_blank" class="social-button whatsapp">
+          <img src="imagens/facebook-icon.png" alt="Facebook" class="social-icon">
+        </a>
+        <a href="https://wa.me/+5538997362429" target="_blank" class="social-button whatsapp">
+          <img src="imagens/whatsapp-icon.png" alt="WhatsApp" class="social-icon">
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 HD INFORPAPER. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    const backToTopButton = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.style.display = 'block';
+      } else {
+        backToTopButton.style.display = 'none';
+      }
+    });
+
+    function toggleMenu() {
+      const navBar = document.querySelector('.nav-bar');
+      navBar.classList.toggle('active');
+    }
+  </script>
+  <!-- Adicione o link para os ícones do Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
